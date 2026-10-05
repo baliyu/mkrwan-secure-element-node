@@ -235,7 +235,9 @@ def report(image, factory):
     diff = [i for i in range(CONFIG_SIZE) if image[i] != factory[i]]
     out.append("Bytes changed from the chip's factory values: %s" % (
         ", ".join("%d (0x%02X->0x%02X)" % (i, factory[i], image[i]) for i in diff) or "none"))
-    out.append("Lock CRC (Lock command, summary of all 128 bytes): %s" % crc16(image).hex().upper())
+    crc = crc16(image)
+    out.append("Lock CRC (summary of all 128 bytes): bytes %02X %02X, value 0x%04X" % (
+        crc[0], crc[1], crc[0] | (crc[1] << 8)))
     return "\n".join(out)
 
 

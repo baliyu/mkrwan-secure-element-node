@@ -1,0 +1,16 @@
+
+=== Step 3: write configuration (no lock) ===
+Image matches this chip's serial number and revision.
+Differences between chip and image:
+  byte 40: chip 0x00  image 0x8F
+  byte 41: chip 0x00  image 0x20
+  byte 116: chip 0x3C  image 0x18
+3 byte(s) will change. The config zone is NOT locked by this sketch.
+Type WRITE and press Enter to write, anything else to cancel:
+Received: "WRITE"  (bytes: 57 52 49 54 45 0a )
+Written.
+Read-back differences:
+  none - all 128 bytes match the image.
+CRC of the chip's configuration: 0x67BF  expected for the lock: 0x67BF  MATCH
+Config zone lock byte: 0x55 (still UNLOCKED, as intended)
+Step 3 complete.
