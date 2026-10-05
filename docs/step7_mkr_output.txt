@@ -1,0 +1,62 @@
+TX ok: fcnt=1 len=18 seal=16.8 ms (MKR SE #1)
+   AIR: 02 01 00 00 00 38 95 23 1C 72 FA B1 4A 90 57 D7 4C 62 
+TX ok: fcnt=2 len=18 seal=16.8 ms (MKR SE #2)
+   AIR: 02 02 00 00 00 D6 0E 64 55 8E 14 4E 01 4A C4 06 18 4C 
+TX ok: fcnt=3 len=18 seal=16.8 ms (MKR SE #3)
+   AIR: 02 03 00 00 00 EF 94 7A BF F7 26 F1 6B 2F 17 FA 3F C1 
+TX ok: fcnt=4 len=18 seal=16.8 ms (MKR SE #4)
+   AIR: 02 04 00 00 00 A5 2D C6 46 A0 4E 28 84 B4 24 2E C6 35 
+TX ok: fcnt=5 len=18 seal=16.8 ms (MKR SE #5)
+   AIR: 02 05 00 00 00 79 FB 0F 8A B1 68 E2 E9 71 BB 33 07 A4 
+TX ok: fcnt=6 len=18 seal=16.8 ms (MKR SE #6)
+   AIR: 02 06 00 00 00 09 6D 71 38 1F 8B 14 2F C4 36 90 DE 26 
+TX ok: fcnt=7 len=18 seal=16.8 ms (MKR SE #7)
+   AIR: 02 07 00 00 00 FC CE 98 43 8B 5A 1F 82 6B 47 2D 61 9B 
+TX ok: fcnt=8 len=18 seal=16.8 ms (MKR SE #8)
+   AIR: 02 08 00 00 00 2F 92 98 18 B6 6C FD B5 E8 25 11 4C A5 
+TX ok: fcnt=9 len=18 seal=16.8 ms (MKR SE #9)
+   AIR: 02 09 00 00 00 17 D7 11 87 CA D3 0F 99 BC 7F 36 D7 B8 
+
+=== MKR WAN 1310 secure-element LoRa node ===
+Self-test: slot 10 link keys give the recorded known answers.
+Monotonic Counter[1] = 10 (next packet uses the next value)
+LoRa: 868.1 MHz, SF7, BW125, CR4/5, CRC on, +14 dBm
+Device id 0x02
+TX ok: fcnt=11 len=19 seal=16.8 ms (MKR SE #11)
+   AIR: 02 0B 00 00 00 22 07 45 46 CA 13 9E 99 AC F6 0F 7C 87 2B 
+TX ok: fcnt=12 len=19 seal=16.8 ms (MKR SE #12)
+   AIR: 02 0C 00 00 00 D7 CB 15 36 4F 34 7A E4 12 EE 84 E9 37 8E 
+TX ok: fcnt=13 len=19 seal=16.8 ms (MKR SE #13)
+   AIR: 02 0D 00 00 00 25 D2 C0 48 61 2D 63 AF C4 43 CE 7B E8 84 
+
+=== MKR WAN 1310 secure-element LoRa node ===
+Self-test: slot 10 link keys give the recorded known answers.
+Monotonic Counter[1] = 13 (next packet uses the next value)
+LoRa: 868.1 MHz, SF7, BW125, CR4/5, CRC on, +14 dBm
+Device id 0x02
+TX ok: fcnt=14 len=19 seal=16.8 ms (MKR SE #14)
+   AIR: 02 0E 00 00 00 E3 3D AD 7B 72 AE 57 FF D4 88 F7 0F 72 3B 
+TX ok: fcnt=15 len=19 seal=16.8 ms (MKR SE #15)
+   AIR: 02 0F 00 00 00 D7 31 BD D8 0E 54 8A 05 86 3E 4F 89 AD 50 
+TX ok: fcnt=16 len=19 seal=16.8 ms (MKR SE #16)
+   AIR: 02 10 00 00 00 AE 28 FF EA B0 E0 5F B1 BC 6A B0 FC 0F 69 
+TX ok: fcnt=17 len=19 seal=16.8 ms (MKR SE #17)
+   AIR: 02 11 00 00 00 14 82 12 AB 65 DA 9B F4 6D 08 61 59 F2 D8 
+TX ok: fcnt=18 len=19 seal=16.8 ms (MKR SE #18)
+   AIR: 02 12 00 00 00 F6 9C 76 53 FE CA 5B 60 AB 5D DE 79 FB F2 
+TX ok: fcnt=19 len=19 seal=16.8 ms (MKR SE #19)
+   AIR: 02 13 00 00 00 29 39 C3 22 B9 2D 03 D7 E7 39 FC AE BA 70 
+TX ok: fcnt=20 len=19 seal=16.8 ms (MKR SE #20)
+   AIR: 02 14 00 00 00 04 07 FD 65 50 70 1E FD B2 58 A4 C5 A3 B6 
+TX ok: fcnt=21 len=19 seal=16.8 ms (MKR SE #21)
+   AIR: 02 15 00 00 00 3C BF 51 C8 40 F0 8B 10 4E C0 D3 E2 D4 E5 
+TX ok: fcnt=22 len=19 seal=16.8 ms (MKR SE #22)
+   AIR: 02 16 00 00 00 38 49 EA 76 6C D0 69 B0 B1 83 15 75 B3 CB 
+TX ok: fcnt=23 len=19 seal=16.8 ms (MKR SE #23)
+   AIR: 02 17 00 00 00 C3 F6 CC 5C 0D 10 2D FA 11 D6 96 49 79 F4 
+TX ok: fcnt=24 len=19 seal=16.8 ms (MKR SE #24)
+   AIR: 02 18 00 00 00 AE 75 2C C9 F5 F1 C7 FE 61 1C 97 03 C0 9D 
+TX ok: fcnt=25 len=19 seal=16.8 ms (MKR SE #25)
+   AIR: 02 19 00 00 00 DC 35 EC AF 55 70 51 AA 0E A6 07 BF E0 4B 
+TX ok: fcnt=26 len=19 seal=16.8 ms (MKR SE #26)
+   AIR: 02 1A 00 00 00 AD 9F 46 6D 6A 20 86 C6 1B 6F AA DB D6 43 

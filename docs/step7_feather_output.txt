@@ -1,0 +1,25 @@
+No stored replay floor (fresh flash): accepting from fcnt 1
+Secure receiver listening on 868.1 MHz...
+AIR [18 B]: 02 01 00 00 00 38 95 23 1C 72 FA B1 4A 90 57 D7 4C 62
+  (replay floor saved to flash: 101)
+  OK   dev=2 fcnt=1 data=MKR SE #1  RSSI -112 dBm  SNR 7.25
+AIR [18 B]: 02 02 00 00 00 D6 0E 64 55 8E 14 4E 01 4A C4 06 18 4C
+  OK   dev=2 fcnt=2 data=MKR SE #2  RSSI -112 dBm  SNR 7.50
+Replay floor restored from flash: accepting only fcnt > 101
+Secure receiver listening on 868.1 MHz...
+AIR [19 B]: 02 10 00 00 00 AE 28 FF EA B0 E0 5F B1 BC 6A B0 FC 0F 69
+  REJECTED: replay (fcnt not newer than 101)  RSSI -111 dBm  SNR 7.50
+AIR [19 B]: 02 11 00 00 00 14 82 12 AB 65 DA 9B F4 6D 08 61 59 F2 D8
+  REJECTED: replay (fcnt not newer than 101)  RSSI -111 dBm  SNR 7.00
+AIR [19 B]: 02 12 00 00 00 F6 9C 76 53 FE CA 5B 60 AB 5D DE 79 FB F2
+  REJECTED: replay (fcnt not newer than 101)  RSSI -111 dBm  SNR 7.00
+AIR [19 B]: 02 13 00 00 00 29 39 C3 22 B9 2D 03 D7 E7 39 FC AE BA 70
+  REJECTED: replay (fcnt not newer than 101)  RSSI -111 dBm  SNR 7.50
+AIR [19 B]: 02 14 00 00 00 04 07 FD 65 50 70 1E FD B2 58 A4 C5 A3 B6
+  REJECTED: replay (fcnt not newer than 101)  RSSI -111 dBm  SNR 7.25
+AIR [19 B]: 02 15 00 00 00 3C BF 51 C8 40 F0 8B 10 4E C0 D3 E2 D4 E5
+  REJECTED: replay (fcnt not newer than 101)  RSSI -112 dBm  SNR 7.00
+AIR [19 B]: 02 16 00 00 00 38 49 EA 76 6C D0 69 B0 B1 83 15 75 B3 CB
+  REJECTED: replay (fcnt not newer than 101)  RSSI -110 dBm  SNR 7.75
+AIR [19 B]: 02 17 00 00 00 C3 F6 CC 5C 0D 10 2D FA 11 D6 96 49 79 F4
+  REJECTED: replay (fcnt not newer than 101)  RSSI -111 dBm  SNR 7.25
