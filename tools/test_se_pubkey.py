@@ -3,6 +3,8 @@
 
     python3 tools/test_se_pubkey.py
 """
+import contextlib
+import io
 import os
 import sys
 import tempfile
@@ -64,7 +66,8 @@ class PubKey(unittest.TestCase):
             out = os.path.join(d, "out.txt")
             with open(out, "w") as f:
                 f.write(self.text)
-            self.assertEqual(sp.main([out]), 0)
+            with contextlib.redirect_stdout(io.StringIO()):     # keep the test log clean
+                self.assertEqual(sp.main([out]), 0)
             with open(os.path.join(d, "device_identity_pub.pem"), "rb") as f:
                 pub = serialization.load_pem_public_key(f.read())
         msg = b"challenge"

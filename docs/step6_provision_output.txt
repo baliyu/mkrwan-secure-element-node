@@ -1,0 +1,26 @@
+
+=== Step 6: load link keys, LOCK DATA ZONE (permanent), test ===
+Config locked and as reviewed; slot 0 holds the step 5 identity key.
+Data zone unlocked.
+Write link keys to slot 10, block 0: OK
+
+About to LOCK the DATA zone. This can never be undone:
+  - slot 10 (link keys) can then never be read or rewritten
+  - slot 0 (identity key) stays secret
+  - if AES from slot 10 is refused afterwards, the fallback is AES via TempKey
+Type LOCK DATA and press Enter to lock, anything else to cancel:
+Received: "LOCK DATA"
+Lock (data zone) status: 0x00 (success)
+LockValue (byte 86) now: 0x00  -> DATA ZONE LOCKED
+
+Test 1: AES from slot 10 against known answers computed on the PC
+  key block 0 (enc): C8F7B901E729EBB38C0D7FBDC95C824D  MATCH
+  key block 1 (MIC): 50FA0479110D4BD9A0F5579A1CABF9DB  MATCH
+Test 1 PASSED: the link keys are in slot 10 and work; they can never be read out.
+
+Test 2: ECDSA signature with the identity key (slot 0)
+SIGN_MSG: 04386B8941C3E3A18F31AC48902D49577860B4BDE1A6446154AEF28176C51458
+SIGNATURE: 0A80DD6C694E89C5FF9CA3DD583AE46031C80169E6F7B2703267C4A18ADE284A3DA37ED899004FF1D8A39C4739B6DF8E882464F4FC325143A9531FEABADC38B2
+  Verify on the PC: python3 tools/se_verify_sig.py docs/step6_provision_output.txt docs/device_identity_pub.pem
+
+Step 6 complete. Now delete firmware/se_provision/se_provision_data.h from the PC.

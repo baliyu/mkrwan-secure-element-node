@@ -1,0 +1,19 @@
+
+=== Step 6a: AES test with published test keys ===
+Config locked and as reviewed; data zone unlocked.
+
+Test A: AES engine with the test keys in TempKey
+  key block 0: 69C4E0D86A7B0430D8CDB78070B4C55A  MATCH
+  key block 1: 3AD77BB40D7A3660A89ECAF32466EF97  MATCH
+Test A PASSED: the chip's AES matches FIPS-197 and SP 800-38A.
+
+Test B writes the two PUBLIC test keys into slot 10 (data zone still unlocked, so they will be replaced in step 6b).
+Type LOAD TEST KEYS and press Enter to continue, anything else to stop here:
+Received: "LOAD TEST KEYS"
+Write test keys to slot 10, block 0: OK
+Test B: AES with the keys in slot 10
+  key block 0: AES refused - status 0x03 (parse error: command or parameters rejected)
+Test B: the chip refuses AES from a slot while the data zone is unlocked.
+  This matches Microchip's own tests, which only use slot AES after the data lock.
+  Not a failure of the design - it decides how step 6b/6c are ordered.
+Step 6a complete.

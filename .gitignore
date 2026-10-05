@@ -1,0 +1,6 @@
+# Secrets - never commit
+keys/
+firmware/se_provision/se_provision_data.h
+
+# Python
+__pycache__/
