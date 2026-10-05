@@ -1,0 +1,20 @@
+
+=== Step 4: lock the CONFIGURATION zone (permanent) ===
+All 128 bytes match the reviewed image. CRC 0x67BF
+RNG before lock: FF FF 00 00 FF FF 00 00 FF FF 00 00 FF FF 00 00 
+  (fixed test pattern, as expected while unlocked)
+
+About to LOCK the configuration zone. This can never be undone:
+  - slot 0 stays the identity private-key slot
+  - slot 10 becomes a secret AES key slot (never readable)
+  - the data zone stays UNLOCKED (keys are tested before it is locked)
+The chip will refuse the lock unless its CRC equals 0x67BF.
+Type LOCK CONFIG and press Enter to lock, anything else to cancel:
+Received: "LOCK CONFIG"
+Lock command status: 0x00 (success)
+LockConfig (byte 87) now: 0x00  -> LOCKED
+LockValue  (byte 86) now: 0x55  -> data zone still unlocked (as intended)
+Other bytes changed: 0
+RNG after lock:  34 A1 BF C7 14 27 6F E1 8D 81 4F 24 D2 F8 B0 01 
+  (real random data)
+Step 4 complete: configuration zone locked.
