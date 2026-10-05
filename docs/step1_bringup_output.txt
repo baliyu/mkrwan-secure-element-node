@@ -1,0 +1,21 @@
+=== Secure element bring-up (read-only) ===
+Secure element found at I2C 0x60.
+Serial number: 0123B8D851729577EE
+Revision:      00006003  -> ATECC608A/B
+I2C address:   0x60
+Config zone lock (byte 87): 0x55  (UNLOCKED)
+Data zone lock   (byte 86): 0x55  (UNLOCKED)
+SlotLocked (bytes 88-89): 0xFFFF  (0xFFFF = no individual slot locked)
+Library locked(): no
+
+Configuration zone (128 bytes):
+00: 01 23 B8 D8 00 00 60 03 51 72 95 77 EE 61 55 00
+10: C0 00 00 00 83 20 87 20 8F 20 C4 8F 8F 8F 8F 8F
+20: 9F 8F AF 8F 00 00 00 00 00 00 00 00 00 00 00 00
+30: 00 00 AF 8F FF FF FF FF 00 00 00 00 FF FF FF FF
+40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+50: 00 00 00 00 00 00 55 55 FF FF 00 00 00 00 00 00
+60: 33 00 33 00 33 00 1C 00 1C 00 1C 00 1C 00 1C 00
+70: 3C 00 3C 00 3C 00 3C 00 3C 00 3C 00 3C 00 1C 00
+
+Done. Nothing was written to the secure element.
