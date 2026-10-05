@@ -1,0 +1,13 @@
+
+=== Step 5: device identity key (slot 0) ===
+Config locked, data zone unlocked, slot 0 = private P-256 key slot.
+Slot 0 holds no valid key yet (expected on first run).
+Type GENKEY to create the identity key inside the chip, anything else to cancel:
+Received: "GENKEY"
+Private key created inside the chip in 120 ms (it can never be read out).
+Public key recomputed by the chip: MATCH
+
+Copy the next line into docs/step5_identity_key_output.txt:
+PUBKEY: E86CAC6B91CCCD43B8DADA1F763B4CC863AFA7D1FA15275C211896463BD86B06CA588F712851113E2C3278669B41E1AF6268F72D23132114FF47E83463711F14
+
+Step 5 complete. Next on the PC: python3 tools/se_pubkey.py docs/step5_identity_key_output.txt
