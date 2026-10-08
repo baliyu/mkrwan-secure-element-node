@@ -108,6 +108,9 @@ Steps 4 and 6 are permanent. Their sketches refuse to run from an unexpected sta
 - **The hardware counter removed a whole class of bookkeeping.** The STM32 node needed EEPROM reserve-before-use blocks and jumped up to 100 counter values after a reset; here a reset or power cut continues from the next value (fcnt 10 → 11 and 13 → 14 on hardware).
 - **Weak link budget noticed from RSSI.** The receiver reported about −112 dBm with the boards side by side, a reminder to check the MKR's external antenna (it has no on-board antenna).
 
+## Security analysis
+A STRIDE threat model is in [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md): the attackers, assets and trust boundaries, 12 threats, the evidence behind each mitigation and the residual risk. It is my own design-level analysis, not an independent review. The three things I would fix first for a product: the I2C bus is unprotected and the keys were provisioned in the clear, the SAMD21 firmware is not secure-booted, and the monotonic counter runs out after about a year at one packet per 15 s.
+
 ## Known limitations
 - **The I2C bus is visible.** An attacker with probes on the board sees the AES inputs and outputs (never the keys). The ATECC608's I/O protection key feature, not used here, encrypts that traffic.
 - **Provisioning was in the clear.** The link keys crossed I2C once, unencrypted, at my desk; production would use encrypted writes or Microchip's secure provisioning.
