@@ -23,6 +23,24 @@ This project fixes a limitation I documented there: *"link keys are compiled int
 - [x] Step 6 – Link keys loaded into slot 10, **data zone locked**; chip AES from slot 10 matched answers computed on the PC; ECDSA signature from slot 0 verified on the PC
 - [x] Step 7 – LoRa node: AES-CTR + AES-CMAC built from the chip's single-block AES; 2,000 random packets byte-identical to the STM32 `secure_link.c`; Feather accepts the packets on air
 
+<!-- diagram:mkr_prov -->
+**How the secure element was provisioned (the two red steps are permanent)**
+
+```mermaid
+flowchart TD
+    A["Step 1: read-only bring-up<br/>the chip is an ATECC608"] --> B["Step 2: configuration designer<br/>tools/se_config.py, 19 host tests"]
+    B --> C["Step 3: write the configuration<br/>read back: 128 bytes match, still unlocked"]
+    C --> D["Step 4: LOCK CONFIGURATION ZONE<br/>with the summary-CRC check (permanent)"]
+    D --> E["Step 5: identity key generated inside the chip<br/>slot 0, public key validated"]
+    E --> F["Step 6a: chip AES known-answer tests<br/>FIPS-197 and SP 800-38A"]
+    F --> G["Step 6: link keys loaded into slot 10<br/>LOCK DATA ZONE (permanent)<br/>chip AES matches the PC"]
+    G --> H["Step 7: LoRa node<br/>2,000 packets match the STM32 code<br/>Feather accepts them on air"]
+    classDef perm fill:#ffe0e0,stroke:#c00,stroke-width:2px
+    class D,G perm
+```
+
+*Steps 4 and 6 need a typed confirmation (LOCK CONFIG, LOCK DATA) and refuse to run from an unexpected state.*
+
 ## Hardware
 
 | Part | Role |
@@ -52,6 +70,22 @@ CTR block:  01 | dev_id | fcnt (LE) | 00 x9 | block index (from 1)
 MIC:        first 4 bytes of AES-CMAC (RFC 4493) over dev_id || fcnt || ciphertext
 ```
 The ATECC608 only offers AES-ECB on a single block. `firmware/se_lora_node/se_link.c` builds CTR and CMAC from those blocks; a short packet costs 3 chip operations (1 CTR + 2 CMAC).
+
+<!-- diagram:mkr_components -->
+**How a packet is sealed**
+
+```mermaid
+flowchart LR
+    subgraph MKR["MKR WAN 1310 sender"]
+        MCU["SAMD21 firmware<br/>se_link.c builds CTR and CMAC<br/>from single AES blocks"]
+        SE["ATECC608 secure element<br/>slot 10: link keys, never readable<br/>Counter 1: frame counter<br/>slot 0: identity key"]
+        MCU <-->|"I2C: 3 chip AES operations<br/>per short packet, 16.8 ms"| SE
+    end
+    MCU -->|"LoRa 868.1 MHz, SF7<br/>dev_id, fcnt, ciphertext, MIC"| RX["Feather M0 receiver, unchanged<br/>software AES"]
+    RX --> OK["Accepted: OK dev=2 fcnt=1 data=MKR SE #1"]
+```
+
+*The keys never leave the ATECC608. The receiver is the unchanged software implementation from the STM32 project.*
 
 ## Measurements
 
