@@ -21,6 +21,7 @@ from cryptography.hazmat.primitives.asymmetric import ec
 
 
 def parse_pubkey(text):
+    """The 64 raw bytes (X then Y) of the single 'PUBKEY:' line in the Serial Monitor text; ValueError if there is none, several different ones, or the wrong length."""
     keys = re.findall(r"PUBKEY:\s*([0-9A-Fa-f]+)\s*$", text, re.M)
     if not keys:
         raise ValueError("no 'PUBKEY:' line found")
@@ -40,10 +41,12 @@ def to_public_key(raw):
 
 
 def fingerprint(raw):
+    """The first 16 hex characters of the SHA-256 of the raw public key, to quote in the README."""
     return hashlib.sha256(raw).hexdigest()[:16]
 
 
 def main(argv=None):
+    """Command line: check the exported public key and save it as a PEM file with its fingerprint."""
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("output", help="saved Serial Monitor output of se_identity_key")
     ap.add_argument("--pem", default=None, help="where to write the PEM (default docs/device_identity_pub.pem)")
