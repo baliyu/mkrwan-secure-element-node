@@ -1,4 +1,5 @@
 # MKR WAN 1310 Secure-Element LoRa Node
+![CI](https://github.com/baliyu/mkrwan-secure-element-node/actions/workflows/ci.yml/badge.svg)
 
 Device identity and LoRa link keys held in a hardware secure element (Microchip **ATECC608**) on an Arduino **MKR WAN 1310**. The keys are generated or loaded once, locked inside the chip, and never leave it: every AES block of every LoRa packet is computed by the secure element. The packets are byte-identical to my software implementation in [stm32l0-freertos-sensor-node](https://github.com/baliyu/stm32l0-freertos-sensor-node), and the unchanged Feather M0 receiver from that project accepts them.
 
@@ -12,6 +13,8 @@ This project fixes a limitation I documented there: *"link keys are compiled int
 | AES | hardware, in the secure element | software (`aes128.c`) |
 | Frame counter | ATECC608 monotonic Counter[1] | replay floor in flash |
 | Packet `fcnt=1` on air | `02 01 00 00 00 38 95 23 1C 72 FA B1 4A 90 57 D7 4C 62` | **same 18 bytes → `OK dev=2 fcnt=1 data=MKR SE #1`** |
+
+The Python tools, the C interface, the sketches and the secure-element configuration are listed in [docs/API.md](docs/API.md). Its generated parts, and the numbers in this README that come from the code or from the evidence files in `docs/`, are checked by `python3 -m unittest discover -s tools`; CI runs that, including the cross-check against the STM32 project.
 
 ## Progress
 - [x] Step 1 – Read-only bring-up: the chip is an **ATECC608** (RevNum `00 00 60 03`), not the ATECC508A listed in the board's older documentation; configuration and data zones unlocked

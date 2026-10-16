@@ -20,6 +20,7 @@ from cryptography.hazmat.primitives.asymmetric import ec, utils
 
 
 def parse(text):
+    """The 32-byte signed message and the 64-byte signature from the Serial Monitor text (exactly one SIGN_MSG line and one SIGNATURE line)."""
     def one(tag, n):
         vals = set(v.upper() for v in re.findall(tag + r":\s*([0-9A-Fa-f]+)\s*$", text, re.M))
         if len(vals) != 1:
@@ -32,6 +33,7 @@ def parse(text):
 
 
 def verify(pub, msg, sig):
+    """True if sig (r then s, 32 bytes each) is a valid ECDSA P-256 signature of the already-hashed message msg under the public key pub."""
     r = int.from_bytes(sig[:32], "big")
     s = int.from_bytes(sig[32:], "big")
     try:
@@ -42,9 +44,10 @@ def verify(pub, msg, sig):
 
 
 def main(argv=None):
+    """Command line: verify the chip's signature against the saved identity public key."""
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("output")
-    ap.add_argument("pem")
+    ap.add_argument("output", help="saved Serial Monitor output with the SIGN_MSG and SIGNATURE lines")
+    ap.add_argument("pem", help="the saved identity public key (PEM), e.g. docs/device_identity_pub.pem")
     a = ap.parse_args(argv)
     with open(a.output) as f:
         msg, sig = parse(f.read())

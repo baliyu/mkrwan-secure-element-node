@@ -1,0 +1,48 @@
+name: CI
+
+# Runs on every push to main, on pull requests, and on demand.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+    working-directory: mkrwan-secure-element-node
+
+jobs:
+  tests:
+    name: Python and C tests, documentation checks, cross-check with the STM32 project
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@v7
+        with:
+          path: mkrwan-secure-element-node
+
+      - name: Check out the STM32 project, which the cross-check compares against
+        uses: actions/checkout@v7
+        with:
+          repository: baliyu/stm32l0-freertos-sensor-node
+          path: stm32l0-freertos-sensor-node
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install the packages the tests need
+        run: python -m pip install cryptography
+
+      - name: Run every test (configuration designer, provisioning, packets, documentation, cross-check)
+        run: python -m unittest discover -s tools -v

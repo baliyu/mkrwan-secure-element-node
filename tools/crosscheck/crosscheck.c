@@ -3,7 +3,7 @@
  * byte-identical to the STM32 project's secure_link.c, which the Feather
  * receiver runs, and that sl_open() on the receiver side accepts them.
  *
- *   make            (STM32_SL defaults to /mnt/c/stm32/l072_blinky/secure_link)
+ *   make            (STM32_SL defaults to ../../../stm32l0-freertos-sensor-node/secure_link)
  *   ./crosscheck
  *
  * se_link gets its AES blocks from the STM32's own software aes128_encrypt(),
